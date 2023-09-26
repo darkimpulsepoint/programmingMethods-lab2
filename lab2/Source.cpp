@@ -10,7 +10,7 @@
 using namespace std;
 
 void printMsgIncorrectInput() {
-    const string incorrectInputMsg = "Ошибка ввода!";
+    const string incorrectInputMsg = "Incorrect input!";
     cout << incorrectInputMsg << endl;
 }
 
@@ -18,10 +18,10 @@ void task1() {
     double sum;
     int term;
 
-    cout << "Введите сумму вклада: " << endl;
+    cout << "Enter deposit value: " << endl;
     cin >> sum;
 
-    cout << "Введите срок (в месяцах): " << endl;
+    cout << "Enter term (in months): " << endl;
     cin >> term;
 
     if (sum < 0 || term < 0) {
@@ -38,7 +38,7 @@ void task1() {
         profit = sum * 0.13 * term / 12;
     }
 
-    cout << "Доход: " << floor(profit) << " р. " << round((profit - static_cast<int>(profit))*100) << " коп." << endl;
+    cout << "Income: " << floor(profit) << " rub. " << round((profit - static_cast<int>(profit)) * 100) << " kop." << endl;
 }
 
 
@@ -46,16 +46,16 @@ void task2() {
     int blackPaperAmount, colorPaperAmount;
     double blackPaperCost, colorPaperCost;
 
-    cout << "Кол-во листов черной-белой бумаги:" << endl;
+    cout << "Number of lists of black-white paper:" << endl;
     cin >> blackPaperAmount;
 
-    cout << "Стоимость листа черно-белой бумаги" << endl;
+    cout << "Cost of one list of white-black paper:" << endl;
     cin >> blackPaperCost;
 
-    cout << "Кол-во листов цветной бумаги:" << endl;
+    cout << "Number of lists of color paper:" << endl;
     cin >> colorPaperAmount;
 
-    cout << "Стоимость листа цветной бумаги" << endl;
+    cout << "Cost of one list of color paper:" << endl;
     cin >> colorPaperCost;
 
     if (blackPaperAmount < 0 || blackPaperCost < 0 || colorPaperAmount < 0 || colorPaperCost < 0) {
@@ -68,7 +68,7 @@ void task2() {
     if (blackPaperAmount > 50 || colorPaperAmount > 25)
         cost *= 0.95;
 
-    cout << "Стоимость: " << floor(cost) << " р. " << ceil((cost - static_cast<int>(cost)) * 100) << " коп." << endl;
+    cout << "All cost: " << floor(cost) << " rub. " << ceil((cost - static_cast<int>(cost)) * 100) << " kop." << endl;
 }
 
 
@@ -76,31 +76,31 @@ void task3() {
 
     double a, b, c;
 
-    cout << "Квадратное уравнение вида ax^2 + bx + c = 0" << endl;
+    cout << "Quadratic equation is ax^2 + bx + c = 0" << endl;
 
-    cout << "Введите a, b и c" << endl;
+    cout << "Enter a, b and c" << endl;
     cin >> a >> b >> c;
 
     double discriminant = b * b - 4 * a * c;
 
     if (discriminant < 0) {
-        cout << "Нет решений!" << endl;
+        cout << "No solutions!" << endl;
     }
     else if (discriminant == 0) {
         double x = -b / (2 * a);
-        cout << "Корень уравнения: " << x << endl;
+        cout << "Solution is: " << x << endl;
     }
     else {
         double x1 = (-b - sqrt(discriminant)) / (2 * a);
         double x2 = (-b + sqrt(discriminant)) / (2 * a);
 
-        cout << "Корни: (" << x1 << ", " << x2 << ")" << endl;
+        cout << "Solutions: " << x1 << " and " << x2 << endl;
     }
 }
 
 
 void task4() {
-    cout << "Стоимость товара: " << endl;
+    cout << "Cost of product: " << endl;
     double price;
     cin >> price;
 
@@ -120,7 +120,7 @@ void task4() {
 
     double cashbackSum = price * cahbackPersent;
 
-    cout << "Кэшбек: " << floor(cashbackSum) << " р. " << round((cashbackSum - static_cast<int>(cashbackSum)) * 100) << " коп." << endl;
+    cout << "Cashback: " << floor(cashbackSum) << " rub. " << round((cashbackSum - static_cast<int>(cashbackSum)) * 100) << " kop." << endl;
 }
 
 
@@ -131,7 +131,7 @@ void task4() {
 
 void task5() {
     double x;
-    cout << "Введите x:" << endl;
+    cout << "Enter x:" << endl;
     cin >> x;
 
     int parametrChoice;
@@ -139,7 +139,7 @@ void task5() {
     bool isParametrChoiceMade = false;
 
     while (!isParametrChoiceMade) {
-        cout << "Выберите параметр:\n1 - a=0.5, b=4.5, z=e^(ax)\n2 - a=0.5, b=3.7, z=e^(2ax)\n3 - a=0.5, b=2.7, z=e^(2.5ax)" << endl;
+        cout << "Choose paramatr:\n1 - a=0.5, b=4.5, z=e^(ax)\n2 - a=0.5, b=3.7, z=e^(2ax)\n3 - a=0.5, b=2.7, z=e^(2.5ax)" << endl;
         cin >> parametrChoice;
 
         switch (parametrChoice) {
@@ -165,37 +165,44 @@ void task5() {
             break;
 
         default:
-            cout << "Неправильный номер параметра!" << endl;
+            cout << "Incorrect number of parametr!" << endl;
         }
     }
-    double function;
+    long double function;
 
     if (x <= 5 * a) {
-        function = 2.5 * b * b + a * x - 4.5 * cos(x * z);
+        cout << "Function value is: " << 2.5 * b * b + a * x - 4.5 * cos(x * z) << endl;
     }
     else if (x > b) {
-        function = sqrt(6.5 * b * b + (a - x * x * x * z));
+        if (a < x * x * x * z) {
+            cout << "Can't solve sqrt from negative number!" << endl;
+        }
+        else {
+            cout << "Function value is: " << sqrt(6.5 * b * b + (a - x * x * x * z)) << endl;
+        }
     }
     else {
-        function = pow(a * a - 5.4 * x, 3) + log(x * z);
+        if (x * z <= 0) {
+            cout << "Cant solve log(p) if p <= 0" << endl;
+        }
+        else {
+            cout << "Function value is: " << pow(a * a - 5.4 * x, 3) + log(x * z) << endl;
+        }
     }
-    
-    cout << "Значение функции: " << function << endl;
 }
 
 
 int main() {
-    setlocale(LC_ALL, "rus");
 
     int taskNumber;
 
     while (true) {
         system("cls");
 
-        void (*tasks[])() = {task1, task2, task3, task4, task5};
+        void (*tasks[])() = { task1, task2, task3, task4, task5 };
 
-        cout << "Введите номер задания (1-5)" << endl;
-        cout << "1 - задача про доход\n2 - задача про стоимость печати\n3 - решение квадратного уравнения\n4 - задача про кэшбек\n5 - вычислить значение функции\n\n0 - выход" << endl;
+        cout << "Enter task number (1-5)" << endl;
+        cout << "1 - task about money deposit\n2 - task about cost of printing\n3 - solve quadratic equation\n4 - task about cashback\n5 - calculate the value of a function\n\n0 - exit" << endl;
         cin >> taskNumber;
 
         if (taskNumber == 0) {
@@ -205,7 +212,7 @@ int main() {
             tasks[taskNumber - 1]();
         }
         else {
-            cout << "Некорректный ввод!" << endl;
+            printMsgIncorrectInput();
         }
         system("pause");
     }
