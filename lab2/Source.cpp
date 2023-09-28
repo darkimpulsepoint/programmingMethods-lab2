@@ -139,7 +139,7 @@ void task5() {
     bool isParametrChoiceMade = false;
 
     while (!isParametrChoiceMade) {
-        cout << "Choose paramatr:\n1 - a=0.5, b=4.5, z=e^(ax)\n2 - a=0.5, b=3.7, z=e^(2ax)\n3 - a=0.5, b=2.7, z=e^(2.5ax)" << endl;
+        cout << "Choose parametr:\n1 - a=0.5, b=4.5, z=e^(ax)\n2 - a=0.5, b=3.7, z=e^(2ax)\n3 - a=0.5, b=2.7, z=e^(2.5ax)" << endl;
         cin >> parametrChoice;
 
         switch (parametrChoice) {
@@ -196,10 +196,11 @@ int main() {
 
     int taskNumber;
 
+    void (*tasks[])() = { task1, task2, task3, task4, task5 };
+
     while (true) {
         system("cls");
 
-        void (*tasks[])() = { task1, task2, task3, task4, task5 };
 
         cout << "Enter task number (1-5)" << endl;
         cout << "1 - task about money deposit\n2 - task about cost of printing\n3 - solve quadratic equation\n4 - task about cashback\n5 - calculate the value of a function\n\n0 - exit" << endl;
